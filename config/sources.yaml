@@ -1,0 +1,51 @@
+# AICCON Data Discovery Configuration
+# Machine-readable endpoints for discovery_engine.py
+
+sources:
+  - id: "EU_DATA"
+    name: "data.europa.eu"
+    type: "rest"
+    base_url: "https://data.europa.eu/api/hub/search"
+    docs: "https://data.europa.eu/en/about/documentation"
+
+  - id: "ESTAT"
+    name: "Eurostat"
+    type: "sdmx_3.0"
+    base_url: "https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0"
+    agency: "ESTAT"
+
+  - id: "ISTAT"
+    name: "Istat"
+    type: "sdmx_2.1"
+    base_url: "https://esploradati.istat.it/SDMXWS/rest"
+    agency: "IT1"
+
+  - id: "RUNTS"
+    name: "RUNTS"
+    type: "portal_rest"
+    base_url: "https://servizi.lavoro.gov.it/runts/it-it/"
+    note: "Requires specific endpoint handling for Infocamere services"
+
+  - id: "OECD"
+    name: "OECD"
+    type: "sdmx"
+    base_url: "https://sdmx.oecd.org/public/rest"
+    agency: "OECD"
+
+  - id: "INPS"
+    name: "INPS Open Data"
+    type: "rest"
+    base_url: "https://dati.inps.it/api/3/action"
+    note: "CKAN-based API"
+
+  - id: "SISTAN"
+    name: "Sistan Hub"
+    type: "sdmx_2.1"
+    base_url: "https://esploradati.istat.it/SDMXWS/rest"
+    agency: "SISTAN" # Note: Shares Istat URL but uses Sistan agency filtering
+
+  - id: "DG_EMPL"
+    name: "EU Social Affairs (DG EMPL)"
+    type: "sdmx_2.1"
+    base_url: "https://webgate.ec.europa.eu/empl/redisstat/api/dissemination/sdmx/2.1"
+    agency: "EMPL"
