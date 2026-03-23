@@ -1,3 +1,27 @@
+# ALEX NEXT STEPS: 
+1. discovery_engine/search_tool/downloader: Moving the files onto sharepoint
+5. discovery_engine: does it really search inps and runts? Can I check that it searches them all? 
+6. search_tool: Does it really check all sources? Please check 
+8. Moving on to regional level datasets. many use CKAN but not all. 
+
+REGIONAL_PORTALS = [
+    {"region": "emilia-romagna", "url": "https://dati.emilia-romagna.it"},
+    {"region": "lombardia",      "url": "https://dati.lombardia.it"},
+    {"region": "toscana",        "url": "https://dati.toscana.it"},
+    # ...
+]
+
+def fetch_ckan_portal(base_url, query="terzo settore"):
+    url = f"{base_url}/api/3/action/package_search"
+    params = {"q": query, "rows": 50}
+    ...
+
+- National:  ISTAT (SDMX) + RUNTS + ANPR
+- Regional:  Loop over known CKAN portals (dati.REGIONE.it)
+- Province:  ISTAT filtered by NUTS3 code
+- Comuni:    ISTAT where available, otherwise manual/static
+
+
 # AICCON Data Discovery Tool
 **Mapping the Social Economy Landscape in Italy and Europe.**
 
@@ -37,6 +61,7 @@ The following sources are prioritized for AICCON's research into the social econ
 | **INPS** | INPS (Italy) | Open Data | Granular labor market data and cooperative employment. |
 | **SISTAN** | Sistan (Italy) | SDMX | Data from the National Statistical System network. |
 | **DG_EMP** | EU Social Affairs | REST | Specific EU policy indicators and funding trends. |
+| **WORLD_BANK** | World Bank | REST | SGreat for social protection and financial inclusion (Findex) data. |
 
 
 ## License

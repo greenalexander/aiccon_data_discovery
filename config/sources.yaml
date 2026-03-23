@@ -49,3 +49,9 @@ sources:
     type: "sdmx_2.1"
     base_url: "https://webgate.ec.europa.eu/empl/redisstat/api/dissemination/sdmx/2.1"
     agency: "EMPL"
+
+  - id: "WORLD_BANK"
+    name: "World Bank"
+    type: "rest"
+    base_url: "https://api.worldbank.org/v2"
+    note: "Great for social protection and financial inclusion (Findex) data."
