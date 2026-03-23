@@ -1,12 +1,38 @@
 # AICCON Data Discovery Configuration
-# Machine-readable endpoints for discovery_engine.py
+# Machine-readable endpoints for discovery_engine.py and search_tool.py
+#
+# To add a new source: add an entry under 'sources' with the required fields.
+# To update keywords: edit the 'keywords' section below — changes apply everywhere automatically.
 
+# ---------------------------------------------------------------------------
+# KEYWORD FILTER
+# Used by discovery_engine.py (title filtering) and search_tool.py (queries).
+# Add English and Italian terms in pairs for clarity.
+# ---------------------------------------------------------------------------
+keywords:
+  - "employment"
+  - "occupazione"
+  - "cooperativa"
+  - "cooperative"
+
+# ---------------------------------------------------------------------------
+# DATA SOURCES
+# Fields:
+#   id        : internal identifier used in the code
+#   name      : human-readable name (shown in dashboard)
+#   type      : one of rest, sdmx_2.1, sdmx_3.0, ckan (drives dispatch logic)
+#   base_url  : API root URL
+#   agency    : SDMX agency code (only for SDMX sources)
+#   note      : optional free-text note for maintainers
+# ---------------------------------------------------------------------------
 sources:
+
   - id: "EU_DATA"
     name: "data.europa.eu"
     type: "rest"
     base_url: "https://data.europa.eu/api/hub/search"
     docs: "https://data.europa.eu/en/about/documentation"
+    note: "Aggregates thousands of national and EU open data portals. Supports pagination."
 
   - id: "ESTAT"
     name: "Eurostat"
@@ -18,40 +44,43 @@ sources:
     name: "Istat"
     type: "sdmx_2.1"
     base_url: "https://esploradati.istat.it/SDMXWS/rest"
-    agency: "IT1"
-
-  - id: "RUNTS"
-    name: "RUNTS"
-    type: "portal_rest"
-    base_url: "https://servizi.lavoro.gov.it/runts/it-it/"
-    note: "Requires specific endpoint handling for Infocamere services"
-
-  - id: "OECD"
-    name: "OECD"
-    type: "sdmx"
-    base_url: "https://sdmx.oecd.org/public/rest"
-    agency: "OECD"
-
-  - id: "INPS"
-    name: "INPS Open Data"
-    type: "rest"
-    base_url: "https://dati.inps.it/api/3/action"
-    note: "CKAN-based API"
+    agency: "ISTAT"
+    note: "Istat's SDMX endpoint. Contains some social protection data but limited coverage of third sector/cooperatives."
 
   - id: "SISTAN"
     name: "Sistan Hub"
     type: "sdmx_2.1"
     base_url: "https://esploradati.istat.it/SDMXWS/rest"
-    agency: "SISTAN" # Note: Shares Istat URL but uses Sistan agency filtering
+    agency: "SISTAN"
+    note: "Shares the Istat endpoint but uses SISTAN agency filtering."
+
+  - id: "OECD"
+    name: "OECD"
+    type: "sdmx_2.1"
+    base_url: "https://sdmx.oecd.org/public/rest"
+    agency: "OECD"
 
   - id: "DG_EMPL"
     name: "EU Social Affairs (DG EMPL)"
     type: "sdmx_2.1"
     base_url: "https://webgate.ec.europa.eu/empl/redisstat/api/dissemination/sdmx/2.1"
     agency: "EMPL"
+    note: "EU Directorate-General for Employment, Social Affairs & Inclusion."
+
+  - id: "INPS"
+    name: "INPS Open Data"
+    type: "ckan"
+    base_url: "https://dati.inps.it/api/3/action"
+    note: "CKAN-based portal. Supports package_search with keyword queries."
 
   - id: "WORLD_BANK"
     name: "World Bank"
     type: "rest"
     base_url: "https://api.worldbank.org/v2"
-    note: "Great for social protection and financial inclusion (Findex) data."
+    note: "Good for social protection, poverty, and financial inclusion (Findex) data."
+
+  - id: "RUNTS"
+    name: "RUNTS — Registro Unico Nazionale Terzo Settore"
+    type: "manual"
+    base_url: "https://servizi.lavoro.gov.it/runts/it-it/"
+    note: "No public machine-readable API. Listed as a manual reference link in the catalogue."
