@@ -1,7 +1,16 @@
 # ALEX NEXT STEPS: 
-1. discovery_engine/search_tool/downloader: Moving the files onto sharepoint
-5. discovery_engine: does it really search inps and runts? Can I check that it searches them all? 
-6. search_tool: Does it really check all sources? Please check 
+1. NOW
+(a) Translations for all files
+(b) separate keyword filters? External to the other functions so I can change in one place only
+(c) 1.7. Is it suspicious that it ave me 499 datasets? Maybe not
+(d) discovery_engine and search_tool should search all sources from the yaml file. 
+
+
+2. LATER
+(b) discovery_engine/search_tool/downloader: Moving the files onto sharepoint
+(c) Is it really downloading all these files to my computer? That's surely taking up space. Every time I search a key term, am I downloading hte entire database? 
+(d) other sources? 
+(e) regional datasets? CKAN for many but not all
 8. Moving on to regional level datasets. many use CKAN but not all. 
 
 REGIONAL_PORTALS = [
